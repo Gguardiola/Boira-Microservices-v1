@@ -320,69 +320,7 @@ In the following steps I will explain how to change this configuration for diffe
 
 ## Step 7 - Pushing changes or new containers
 
-
-## Step 3 - Generation of docker images, delivering to production server and deployment
-
-- Dependencies
-
-Install Docker and docker-compose on both servers (development/local and production/remote).
-
-```
-  apt-get install docker
-  apt-get install docker-compose
-```
-
-Now create on the development/local machine a folder to store the .tar images (in my case is called docker-images). Do the same on the remote server if you want.
-
-Next, modify the **auto_config.py** adapted to your case:
-
-```
-MS_NAME = "boira-microservices"
-IMG_TAG = "latest"
-IMG_SERVICES = ["nginx", "dboira", "auth-service", "goodgifts-rest-api", "goodgifts-nextjs-app"]
-TARGET_DIR = "docker-images"
-SOURCE_DIR = "docker-images"
-COMPOSER_FILENAME = "remote-docker-compose.yml"
-REMOTE_TARGET_DIR = "boira-stuff/docker-images"
-REMOTE_SERVER = "root@XXXXXXXXXX"
-CONFIG_FILES = ["auto_config.py", ".env","auto_setup_containers.py", "remote-docker-compose.yml"]
-```
-
-Moving to the next point, we have these scripts: 
-
-- **auto_gen_images.py:** to generate the images. **USE ON DEVELOPMENT/CLIENT HOST!**
-- **auto_send_images.py:** to send via SSH the .tar images. **USE ON DEVELOPMENT/CLIENT HOST!**
-- **auto_push_config.py:** to send the scripts needed to deploy the containers. **USE ON DEVELOPMENT/CLIENT HOST!**
-- **auto_setup_containers.py:** to build the docker-compose and build the containers (run the important stuff). **USE ON PRODUCTION/REMOTE HOST!**
-
-Run the first three scripts. If everything works well, go to the production/remote server. Now you will see the "auto_setup_containers.py along with remote-docker-compose.yml and the folder with the images. Run this script to mount the images and run the containers.
-
-**Congratulations! Now you have Boira-Microservices running!**
-
-## Step 4 - Testing
-
-At this point you can go to you browser and access to the different services by only changing the URL route. By default:
-
-- **http://localhost/next** - Next.js app
-- **http://localhost/api** - RESTful api
-- **http://localhost/auth** - auth service
-
-In the following steps I will explain how to change this configuration for different subdomains via https.
-
-## Step 5 - Configuring nginx to support subdomains
-
-- **https://goodgifts.gabodev.com** - Next.js app
-- **https://api.gabodev.com** - RESTful api
-- **https://auth.gabodev.com** - auth service
-
 **WIP**
-
-## Step 6 - SSL Encryption
-
-**WIP**
-
-## Step 7 - Pushing changes or new containers
-
 
 ## Authors
 
