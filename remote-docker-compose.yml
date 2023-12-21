@@ -1,0 +1,74 @@
+version: "3"
+
+services:
+  #nginx:
+  #  build:
+  #    context: ./nginx
+  #  ports:
+  #    - "80:80"
+  #    - "443:443"
+  #  depends_on:
+  #    - goodgifts-nextjs-app
+  nginx:
+    image: boira-microservices-nginx:latest
+    container_name: nginx_reverse_proxy
+    ports:
+      - 80:80
+    networks:
+      - nginx-network
+      - api-network
+      - auth-network
+      - next-network
+    depends_on:
+      - goodgifts-nextjs-app
+      - goodgifts-rest-api
+      - auth-service
+
+
+  goodgifts-nextjs-app:
+    image: boira-microservices-goodgifts-nextjs-app:latest
+    container_name: goodgifts-nextjs-app
+    ports:
+      - "3000:3000"
+    networks:
+      - next-network
+    
+
+  goodgifts-rest-api:
+    image: boira-microservices-goodgifts-rest-api:latest
+    container_name: goodgifts-rest-api
+    ports:
+      - "5000:5000"
+    depends_on:
+      - dboira
+      - auth-service
+    networks:
+      - api-network
+      - db-network
+  dboira:
+    image: boira-microservices-dboira:latest
+    container_name: dboira
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    networks:
+      - db-network
+
+  auth-service:
+    image: boira-microservices-auth-service:latest
+    container_name: auth-service
+    ports:
+      - "3001:3001"
+    depends_on:
+      - dboira
+    networks:
+      - auth-network
+      - db-network
+
+networks:
+  nginx-network:
+  api-network:
+  auth-network:
+  next-network:
+  db-network:
