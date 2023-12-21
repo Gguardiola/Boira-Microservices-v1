@@ -11,6 +11,7 @@ services:
   #    - goodgifts-nextjs-app
   nginx:
     image: boira-microservices-nginx:latest
+    restart: unless-stopped
     container_name: nginx_reverse_proxy
     ports:
       - 80:80
@@ -27,6 +28,7 @@ services:
 
   goodgifts-nextjs-app:
     image: boira-microservices-goodgifts-nextjs-app:latest
+    restart: unless-stopped
     container_name: goodgifts-nextjs-app
     ports:
       - "3000:3000"
@@ -36,6 +38,7 @@ services:
 
   goodgifts-rest-api:
     image: boira-microservices-goodgifts-rest-api:latest
+    restart: unless-stopped
     container_name: goodgifts-rest-api
     ports:
       - "5000:5000"
@@ -47,6 +50,7 @@ services:
       - db-network
   dboira:
     image: boira-microservices-dboira:latest
+    restart: unless-stopped
     container_name: dboira
     env_file:
       - .env
@@ -57,6 +61,7 @@ services:
 
   auth-service:
     image: boira-microservices-auth-service:latest
+    restart: unless-stopped
     container_name: auth-service
     ports:
       - "3001:3001"
