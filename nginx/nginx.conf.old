@@ -1,7 +1,7 @@
 events {
     worker_connections 1024;
 }
-
+#test 2
 http {
     # HTTP server block
     server {
