@@ -10,7 +10,7 @@ services:
   #  depends_on:
   #    - goodgifts-nextjs-app
   nginx:
-    image: boira-microservices-nginx:latest
+    build: https://github.com/Gguardiola/Boira-Microservices-v1#main:nginx
     restart: unless-stopped
     container_name: nginx_reverse_proxy
     ports:
@@ -27,7 +27,7 @@ services:
 
 
   goodgifts-nextjs-app:
-    image: boira-microservices-goodgifts-nextjs-app:latest
+    build: https://github.com/Gguardiola/goodgifts-nextjs-app.git
     restart: unless-stopped
     container_name: goodgifts-nextjs-app
     ports:
