@@ -1,0 +1,44 @@
+events {
+    worker_connections 1024;
+}
+# test flag
+http {
+    server {
+        listen 80;
+        server_name api.gabodev.com;
+
+        location / {
+            proxy_pass http://goodgifts-rest-api:5000;  # Assuming your REST API is running on port 5000
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
+
+    server {
+        listen 80;
+        server_name goodgifts.gabodev.com;
+
+        location / {
+            proxy_pass http://goodgifts-nextjs-app:3000;  # Assuming your Next.js app is running on port 3000
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
+
+    server {
+        listen 80;
+        server_name auth.gabodev.com;
+
+        location / {
+            proxy_pass http://auth-service:3001;  # Assuming your auth service is running on port 3001
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
+}

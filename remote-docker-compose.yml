@@ -13,8 +13,11 @@ services:
     build: https://github.com/Gguardiola/Boira-Microservices-v1.git#main:nginx
     restart: unless-stopped
     container_name: nginx_reverse_proxy
+    volumes:
+      - ./ssl:/etc/nginx/ssl
     ports:
       - 80:80
+      - 443:443
     networks:
       - nginx-network
       - api-network
@@ -53,6 +56,8 @@ services:
       context: ./dboira
     restart: unless-stopped
     container_name: dboira
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     env_file:
       - .env
     ports:
@@ -78,3 +83,6 @@ networks:
   auth-network:
   next-network:
   db-network:
+
+volumes:
+  postgres_data:  
