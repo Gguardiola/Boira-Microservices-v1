@@ -1,6 +1,7 @@
 FROM nginx:latest
 COPY ./nginx.conf /etc/nginx/nginx.conf
 COPY ./snippets/* /etc/nginx/snippets/
+RUN mkdir -p /etc/nginx/ssl
 
 WORKDIR /app
 RUN chown -R nginx:nginx /app /var/cache/nginx /var/log/nginx /etc/nginx/conf.d /etc/nginx/ssl
