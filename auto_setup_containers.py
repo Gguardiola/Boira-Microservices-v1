@@ -14,5 +14,5 @@ opt = input("Do you want to run the containers? (y/n) ")
 if(opt == "y"):
     print("Running containers...")
     #start remote composer
-    os.system("docker-compose -f "+ COMPOSER_FILENAME +" up -d")
+    os.system("docker-compose -f "+ COMPOSER_FILENAME +" up -d --force-recreate --build")
     print("Done!") 

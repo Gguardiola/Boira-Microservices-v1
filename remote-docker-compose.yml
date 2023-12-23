@@ -27,7 +27,7 @@ services:
 
 
   goodgifts-nextjs-app:
-    build: https://github.com/Gguardiola/goodgifts-nextjs-app.git
+    build: https://github.com/Gguardiola/goodgifts-nextjs-app.git#main
     restart: unless-stopped
     container_name: goodgifts-nextjs-app
     ports:
@@ -37,7 +37,7 @@ services:
     
 
   goodgifts-rest-api:
-    image: https://github.com/Gguardiola/goodgifts-rest-api.git
+    build: https://github.com/Gguardiola/goodgifts-rest-api.git#main
     restart: unless-stopped
     container_name: goodgifts-rest-api
     ports:
@@ -49,7 +49,8 @@ services:
       - api-network
       - db-network
   dboira:
-    image: boira-microservices-dboira:latest
+    build:
+      context: ./dboira
     restart: unless-stopped
     container_name: dboira
     env_file:
@@ -60,7 +61,7 @@ services:
       - db-network
 
   auth-service:
-    image: https://github.com/Gguardiola/auth-service.git
+    build: https://github.com/Gguardiola/auth-service.git#main
     restart: unless-stopped
     container_name: auth-service
     ports:

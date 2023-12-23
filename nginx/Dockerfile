@@ -1,5 +1,5 @@
 FROM nginx:latest
-COPY ./nginx.conf.old /etc/nginx/nginx.conf
+COPY ./nginx.conf /etc/nginx/nginx.conf
 WORKDIR /app
 RUN chown -R nginx:nginx /app && chmod -R 755 /app && \
         chown -R nginx:nginx /var/cache/nginx && \
