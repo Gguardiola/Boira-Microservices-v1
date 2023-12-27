@@ -43,6 +43,8 @@ services:
     build: https://github.com/Gguardiola/goodgifts-rest-api.git#main
     restart: unless-stopped
     container_name: goodgifts-rest-api
+    env_file:
+      - ./goodgifts-rest-api/.env
     ports:
       - "5000:5000"
     depends_on:
@@ -69,6 +71,8 @@ services:
     build: https://github.com/Gguardiola/auth-service.git#main
     restart: unless-stopped
     container_name: auth-service
+    env_file:
+      - ./auth-service/.env
     ports:
       - "3001:3001"
     depends_on:

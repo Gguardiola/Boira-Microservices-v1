@@ -3,6 +3,8 @@ FROM node:18-alpine
 WORKDIR /app
 
 ENV NODE_ENV production
+ENV JWT_SECRET=${JWT_SECRET}
+ENV PORT=${PORT}
 
 RUN addgroup -S nodejs-auth && adduser -S nodejs-auth -G nodejs-auth
 
