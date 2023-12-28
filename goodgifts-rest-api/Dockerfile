@@ -3,7 +3,7 @@ FROM node:18-alpine
 WORKDIR /app
 
 ENV NODE_ENV production
-ENV AUTH_SERVICE_HOST=http://auth-service:${PORT}
+ENV AUTH_SERVICE_HOST=${AUTH_SERVICE_HOST}
 ENV PORT=${PORT}
 
 RUN addgroup -S nodejs-api-goodgifts-v1 && adduser -S nodejs-api-goodgifts-v1 -G nodejs-api-goodgifts-v1

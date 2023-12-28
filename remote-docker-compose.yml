@@ -38,7 +38,6 @@ services:
     networks:
       - next-network
     
-
   goodgifts-rest-api:
     build: https://github.com/Gguardiola/goodgifts-rest-api.git#main
     restart: unless-stopped
