@@ -1,0 +1,25 @@
+#list containers
+docker container ls
+#stop all containers
+docker stop $(docker ps -aq)
+#stop one container
+docker stop [container name]
+#delete one container
+docker rm [container name]
+
+#delete only images
+docker rmi [image name]
+
+#delete chache and images
+docker system prune -a
+
+#list volumes
+docker volume ls
+#delete volumes
+docker volume rm [volume name]
+
+#run all images and start containers
+docker-compose -f remote-docker-compose.yml up -d --build
+#debugging one container
+docker-compose -f remote-docker-compose.yml up --build [image name]
+#NOTE add -d to run it on background

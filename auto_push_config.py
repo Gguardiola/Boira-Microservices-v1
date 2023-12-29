@@ -8,6 +8,8 @@ for file in CONFIG_FILES:
     print("Sending "+ file +"...")
     if(".env" in file): 
         os.system("scp ./"+ file +" "+ REMOTE_SERVER +":"+REMOTE_TARGET_DIR + file)
+    if(".sql" in file): 
+        os.system("scp ./"+ file +" "+ REMOTE_SERVER +":"+ REMOTE_TARGET_DIR + file)
     else:
         os.system("scp ./"+ file +" "+ REMOTE_SERVER +":"+ REMOTE_TARGET_DIR)
     

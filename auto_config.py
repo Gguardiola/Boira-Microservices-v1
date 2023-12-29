@@ -8,4 +8,4 @@ SOURCE_DIR = "docker-images"
 COMPOSER_FILENAME = "remote-docker-compose.yml"
 REMOTE_TARGET_DIR = "boira-stuff/"
 REMOTE_SERVER = "root@167.172.168.118"
-CONFIG_FILES = ["auto_config.py", ".env","auto_setup_containers.py", "remote-docker-compose.yml", "goodgifts-rest-api/.env", "auth-service/.env"]
+CONFIG_FILES = ["auto_config.py", ".env","auto_setup_containers.py", "delete_invalid_tokens.py", "remote-docker-compose.yml", "goodgifts-rest-api/.env", "auth-service/.env", "dboira/init.sql"]
