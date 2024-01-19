@@ -13,6 +13,12 @@ Current containers deployed:
 - node.js server (Express + JWT Auth service) | port 3001
 - postgres server (BBDD server) | port 5432
 
+You can visit the following services:
+
+- [GoodGifts REST API](https://github.com/Gguardiola/goodgifts-rest-api)
+- [GoodGifts Web Application](https://github.com/Gguardiola/goodgifts-nextjs-app)
+- [Auth-service (Express + JWT)](https://github.com/Gguardiola/auth-service)
+
 ### How it works?
 
 The Nginx server receives all requests and redirects traffic based on the domain name from which it was accessed. This way, the services inside the server will be protected from intruders and also well distributed in case that we want to scale the services.
@@ -34,11 +40,6 @@ This diagram shows the containers and the available routes for each.
 ### Step 1 - Create the service repositories
 
 First, create the folders that will contain the repository of each service (e.g. /auth-service). Then create the corresponding files and make a github repository for each service.
-
-In my case, I have the REST API and the frontend:
-
-- [GoodGifts REST API](https://github.com/Gguardiola/goodgifts-rest-api)
-- [GoodGifts Web Application](https://github.com/Gguardiola/goodgifts-nextjs-app)
 
 The Nginx and Postgres projects are inside this repository because docker-compose allows a repository folder as image source.
 
