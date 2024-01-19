@@ -52,28 +52,31 @@ For convenience, I have a global folder where I keep each project folder along w
 ├── auth-service
 │   ├── Dockerfile
 │   ├── README.md
-│   ├── api
-│   ├── controllers
+│   ├── database
 │   ├── index.js
 │   ├── node_modules
 │   ├── package-lock.json
 │   ├── package.json
+│   └── routes
 |
 ├── auto_config.py
 ├── auto_gen_images.py
 ├── auto_push_config.py
 ├── auto_send_images.py
 ├── auto_setup_containers.py
-|
 ├── dboira
 │   ├── Dockerfile
 │   └── init.sql
 |
+├── delete_all_microservices.sh
+├── delete_invalid_tokens.py
 ├── docker-compose.yml
+├── docker-images
 |
 ├── goodgifts-nextjs-app
 │   ├── Dockerfile
 │   ├── README.md
+│   ├── config.ts
 │   ├── next-env.d.ts
 │   ├── next.config.js
 │   ├── node_modules
@@ -84,22 +87,22 @@ For convenience, I have a global folder where I keep each project folder along w
 │   ├── src
 │   ├── tailwind.config.ts
 │   └── tsconfig.json
-|
 ├── goodgifts-rest-api
 │   ├── Dockerfile
 │   ├── README.md
-│   ├── api
-│   ├── controllers
+│   ├── database
 │   ├── index.js
+│   ├── middleware
 │   ├── node_modules
 │   ├── package-lock.json
 │   ├── package.json
-│   ├── service
+│   ├── routes
 │   └── utils
-|
 ├── nginx
 │   ├── Dockerfile
 │   ├── nginx.conf
+│   ├── snippets
+│   └── ssl
 |
 └── remote-docker-compose.yml
 ```
