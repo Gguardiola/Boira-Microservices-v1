@@ -1,14 +1,6 @@
 version: "3"
 
 services:
-  #nginx:
-  #  build:
-  #    context: ./nginx
-  #  ports:
-  #    - "80:80"
-  #    - "443:443"
-  #  depends_on:
-  #    - goodgifts-nextjs-app
   nginx:
     build: https://github.com/Gguardiola/Boira-Microservices-v1.git#main:nginx
     restart: unless-stopped
